@@ -20,7 +20,8 @@ Do the following:
    HINT: no function required
 */
 
-
+const votingAge = 18;
+console.log(votingAge <= 18 ? 'True' : 'False');  
 
 /*
 Task 1b - Values
@@ -32,7 +33,10 @@ Do the following:
 
    HINT: no function required
 */
-
+let firstVariable = 'first';
+const secondVariable = 'second';
+firstVariable = secondVariable;
+console.log(firstVariable);
 
 
 
@@ -47,7 +51,9 @@ Do the following:
 
    HINT: look up the Number method
 */
-
+let yearVariable = '1999';
+yearVariable = Number(yearVariable);
+console.log(yearVariable);
 
 
 
@@ -60,10 +66,11 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
-}
-
+function multiply(a,b){
+  return a * b;  
+};
+let unannouncedResult = multiply(7,8);
+console.log(unannouncedResult);
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -76,8 +83,8 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(age){
+  return age * 7;
 }
 
 
@@ -109,8 +116,14 @@ Puppies less than 1 year
 NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.44999999999999996
 */  
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(weightInLbs,ageInYears){
+  if (ageInYears >= 1) {
+    console.log(`Feed the dog ${weightInLbs <= 5 ? weightInLbs * .05 : weightInLbs <= 10 ? weightInLbs * .04 : weightInLbs <= 15 ? weightInLbs * .03 : weightInLbs * .02} lbs. of food.`) 
+  } else if (ageInYears < 1) {
+    console.log(`Feed the dog ${ageInYears >= 2/12 && ageInYears < 4/12 ? weightInLbs * .1 : ageInYears <= 7/12 ? weightInLbs * .05 : weightInLbs * .04} lbs. of food.`) 
+  } else {
+    console.log('Either you entered some crazy data or the dog is less than 2 months old.');
+  }
 }
 
 
@@ -137,9 +150,31 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 
 HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 */
-
-function game(user, computer){
-  /*add your code here*/
+function computerWeapon() {
+  switch(Math.floor(Math.random() * 3)) {
+  case 0 : return 'rock';
+  break;
+  case 1 : return 'paper';
+  break;
+  case 2 : return 'scissors';
+  break;
+  default : console.log('Your math function failed to return a 0, 1, or 2 for computer weapon choice.');
+  break;
+  }
+}
+function game(user = prompt('Welcome to a rousing round of Stones, Papyrus, Shears!\nPlease choose your weapon of choice and type one of the following: rock, paper, or scissors.')
+, computer = computerWeapon()){
+  user = user.toLowerCase();
+  console.log(`User picks ${user}\nComputer picks ${computer}`);
+  if (user === computer) {
+    return "it's a tie";
+  } else if (user === "rock") {
+    return (computer === "paper" ? "you lose!" : "you win!");
+  } else if (user === "paper") {
+    return (computer === "scissors" ? "you lose!" : "you win!");
+  } else {
+    return (computer === "rock" ? "you lose!" : "you win!");
+  }
 }
 
 
@@ -155,9 +190,9 @@ Using the miles function below do the following:
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
-}
+function miles(k){
+return k / 1.609344;
+};
 
 
 
@@ -169,8 +204,8 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm){
+  return cm / 30.48;
 }
 
 
@@ -185,9 +220,21 @@ Using the annoyingSong function below do the following:
     "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+/*function annoyingSong(startingNumber){
+  for (let i = startingNumber; i > 0; i--) {
+    return `${startingNumber} bottles of soda on the wall, ${startingNumber} bottles of soda, take one down pass it around ${startingNumber - 1} bottles of soda on the wall`;
+  }
+}*/
+function annoyingSong(num) {
+  let songArray = [];
+  for (let i = num; i > 0; i--) {
+    songArray.push(`${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around ${i - 1} bottles of soda on the wall`);
+    }
+    console.log(songArray.join('\n'));
+    return songArray.join('\n');
 }
+
+
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -205,8 +252,22 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(score){
+  score = Math.floor(score /= 10);
+  switch (score) {
+    case 10 : return 'you got an A';
+    break;
+    case 9 : return 'you got an A';
+    break;
+    case 8 : return 'you got a B';
+    break;
+    case 7 : return 'you got a C';
+    break;
+    case 6 : return 'you got a D';
+    break;
+    default : return 'you got an F';
+    break;
+  }
 }
 
 
@@ -224,9 +285,10 @@ HINT - try looking up the .includes() method
 */
 
 
-function vowelCounter(/*add your code here*/) {
-  /*add your code here*/
+function vowelCounter(daString) {
+  return Array.from(daString).filter(val => (val === "a" || val === "e" || val === "i" || val === "o" || val === "u")).length;
 }
+vowelCounter('hello john roy how are you doing today');
 
 
 

@@ -118,13 +118,14 @@ NOTE: If done correctly, a weight of 15 lbs and age of 1 year would return 0.449
 
 function hungryDog(weightInLbs,ageInYears){
   if (ageInYears >= 1) {
-    console.log(`Feed the dog ${weightInLbs <= 5 ? weightInLbs * .05 : weightInLbs <= 10 ? weightInLbs * .04 : weightInLbs <= 15 ? weightInLbs * .03 : weightInLbs * .02} lbs. of food.`) 
+    return (weightInLbs <= 5 ? weightInLbs * .05 : weightInLbs <= 10 ? weightInLbs * .04 : weightInLbs <= 15 ? weightInLbs * .03 : weightInLbs * .02); 
   } else if (ageInYears < 1) {
-    console.log(`Feed the dog ${ageInYears >= 2/12 && ageInYears < 4/12 ? weightInLbs * .1 : ageInYears <= 7/12 ? weightInLbs * .05 : weightInLbs * .04} lbs. of food.`) 
+    return ((ageInYears >= 2/12 && ageInYears < 4/12) ? weightInLbs * .1 : ageInYears < .583 ? weightInLbs * .05 : weightInLbs * .04); 
   } else {
-    console.log('Either you entered some crazy data or the dog is less than 2 months old.');
+    return ("Either you entered some crazy data or the dog is less than 2 months old.");
   }
 }
+hungryDog(4,1);
 
 
 
@@ -191,7 +192,7 @@ Using the miles function below do the following:
 */
 
 function miles(k){
-return k / 1.609344;
+return k * .621371;
 };
 
 
@@ -225,7 +226,7 @@ Using the annoyingSong function below do the following:
     return `${startingNumber} bottles of soda on the wall, ${startingNumber} bottles of soda, take one down pass it around ${startingNumber - 1} bottles of soda on the wall`;
   }
 }*/
-function annoyingSong(num) {
+/*function annoyingSong(num) {
   let songArray = [];
   for (let i = num; i > 0; i--) {
     songArray.push(`${i} bottles of soda on the wall, ${i} bottles of soda, take one down pass it around ${i - 1} bottles of soda on the wall`);
@@ -233,10 +234,22 @@ function annoyingSong(num) {
     console.log(songArray.join('\n'));
     return songArray.join('\n');
 }
-
-
-
-
+*/
+function retVerse(num) {
+ // console.log(num);
+ // num = num.toString();
+ // console.log(num);
+  const verse = num + " bottles of soda on the wall, " + num + " bottles of soda, take one down pass it around " + (num - 1) + " bottles of soda on the wall";
+  //let verse = `${num} bottles of soda on the wall, ${num} bottles of soda, take one down pass it around ${num - 1} bottles of soda on the wall`;
+  //console.log(verse);
+  return verse;
+}
+function annoyingSong(numIn) {
+  for (let i = numIn; i > 0; i--) {
+    return (retVerse(i));
+  }
+}
+annoyingSong(5);
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
 //Grade Calculator
